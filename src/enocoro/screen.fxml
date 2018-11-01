@@ -26,8 +26,7 @@
       <Button fx:id="btnChooseFile" disable="true" layoutX="13.0" layoutY="128.0" mnemonicParsing="false" text="Seleccionar imagen" GridPane.rowIndex="4" />
       <Label fx:id="tvFileName" layoutX="160.0" layoutY="133.0" prefHeight="17.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
    <StackPane fx:id="imgPreview" layoutY="207.0" prefHeight="185.0" prefWidth="345.0" />
-   <Button fx:id="btnEncrypt" disable="true" layoutX="53.0" layoutY="173.0" mnemonicParsing="false" prefWidth="116.0" text="ENCRIPTAR" />
-    <Button fx:id="btnDesencrypt" disable="true" layoutX="176.0" layoutY="173.0" mnemonicParsing="false" text="DESENCRIPTAR" />
+   <Button fx:id="btnEncrypt" disable="true" layoutX="73.0" layoutY="173.0" mnemonicParsing="false" prefHeight="27.0" text="ENCRIPTAR / DESENCRIPTAR" />
    <Label layoutX="234.0" layoutY="43.0" text="Máx 16 caracteres">
       <font>
          <Font size="10.0" />
