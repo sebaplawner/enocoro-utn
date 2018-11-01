@@ -37,18 +37,15 @@ public class Controller {
     private String filePath, fileName;
     private byte[] fileBytes;
     private byte[] bitmapHeader;
-    private boolean enocoroInit = false;
 
     public void initialize() {
         tvIV.textProperty().addListener((observable, oldValue, newValue) -> {
             tvIV.setText(newValue.length() > MAX_IV ? oldValue : newValue);
-            enocoroInit = false;
             checkButtonsVisibility();
         });
 
         tvKey.textProperty().addListener((observable, oldValue, newValue) -> {
             tvKey.setText(newValue.length() > MAX_KEY ? oldValue : newValue);
-            enocoroInit = false;
             checkButtonsVisibility();
         });
 
@@ -95,7 +92,7 @@ public class Controller {
             encoroInit();
 
             for (int i = 0; i < fileBytes.length; i++)
-                fileBytes[i] = (byte) (fileBytes[i] ^ Enocoro.Out());
+                fileBytes[i] = (byte) (fileBytes[i] ^ (byte) Enocoro.Out());
 
             try {
                 String newPath = filePath + "/" + fileName + ".enocoro.bmp";
@@ -122,17 +119,15 @@ public class Controller {
     }
 
     private void encoroInit() {
-        if (!enocoroInit) {
-            short[] key = new short[MAX_KEY];
-            for (int i = 0; i < key.length; i++)
-                key[i] = i < tvKey.getLength() ? (short) tvKey.getText().charAt(i) : 0;
+        short[] key = new short[MAX_KEY];
+        for (int i = 0; i < key.length; i++)
+            key[i] = i < tvKey.getLength() ? (short) tvKey.getText().charAt(i) : 0;
 
-            short[] iv = new short[MAX_IV];
-            for (int i = 0; i < iv.length; i++)
-                iv[i] = i < tvIV.getLength() ? (short) tvIV.getText().charAt(i) : 0;
+        short[] iv = new short[MAX_IV];
+        for (int i = 0; i < iv.length; i++)
+            iv[i] = i < tvIV.getLength() ? (short) tvIV.getText().charAt(i) : 0;
 
-            Enocoro.Init(key, iv);
-        }
+        Enocoro.Init(key, iv);
     }
 
     private void checkButtonsVisibility() {

@@ -109,7 +109,9 @@ public class Enocoro {
 
 
     public static short Out() {
-        return state_a[1];
+        short tmp = state_a[1];
+        Next();
+        return tmp;
     }
 
 
