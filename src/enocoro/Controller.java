@@ -34,6 +34,7 @@ public class Controller {
 
     private final int MAX_IV = 8;
     private final int MAX_KEY = 16;
+    private final int BITMAP_HEADER_24 = 54;
     private String filePath, fileName;
     private byte[] fileBytes;
     private byte[] bitmapHeader;
@@ -74,8 +75,8 @@ public class Controller {
 
                 try {
                     fileBytes = Files.readAllBytes(file.toPath());
-                    bitmapHeader = Arrays.copyOfRange(fileBytes, 0, 54);
-                    fileBytes = Arrays.copyOfRange(fileBytes, 54, fileBytes.length);
+                    bitmapHeader = Arrays.copyOfRange(fileBytes, 0, BITMAP_HEADER_24);
+                    fileBytes = Arrays.copyOfRange(fileBytes, BITMAP_HEADER_24, fileBytes.length);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
